@@ -20,7 +20,12 @@ jobs:
           command: |
             yes | sdkmanager "platforms;android-27" || true
             ./gradlew :android:assembleRelease && scripts/publish-android-snapshot.sh
-
+            ...
+      - run: |
+          curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+      - run:
+	        command: fossa
+          
   release:
     executor: default-executor
     docker:
@@ -32,6 +37,8 @@ jobs:
           command: |
             yes | sdkmanager "platforms;android-27" || true
             ./gradlew :android:assembleRelease && scripts/publish-android-release.sh
+            
+            
 
 workflows:
   version: 2
