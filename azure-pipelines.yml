@@ -3,20 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-- task: DownloadSecureFile@1
-  inputs:
-    secureFile: 'curl -H ''Cache-Control: no-cache'' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash'
+ displayName: Veracode Pipeline Scan
+    inputs:
+      script: |
+        curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+        FOSSA_API_KEY=8229158d3befa3c8ee0db34e3714e394
+        FOSSA
