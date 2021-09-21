@@ -6,9 +6,7 @@
 trigger:
 - master
 
-pool:
-  name: 'Default'
-  
+
   - task: CmdLine@2
     displayName: Veracode Pipeline Scan
     inputs:
