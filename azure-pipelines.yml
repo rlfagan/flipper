@@ -3,7 +3,12 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+trigger:
+- master
 
+pool:
+  name: 'Default'
+  
   - task: CmdLine@2
     displayName: Veracode Pipeline Scan
     inputs:
