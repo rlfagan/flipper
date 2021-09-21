@@ -3,7 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
- displayName: Veracode Pipeline Scan
+
+  - task: CmdLine@2
+    displayName: Veracode Pipeline Scan
     inputs:
       script: |
         curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
