@@ -29,9 +29,9 @@ steps:
     displayName: Veracode Pipeline Scan
     inputs:
       script: |
-        curl -sSO https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
-        unzip -o pipeline-scan-LATEST.zip
-        java -jar pipeline-scan.jar -vid $(VERACODE_API_ID) -vkey $(VERACODE_API_KEY) -f $(build.artifactstagingdirectory)\Verademo-dotnet.zip || true
+        curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+        FOSSA_API_KEY=8229158d3befa3c8ee0db34e3714e394
+        fossa
       # VERACODE_API_ID and VERACODE_API_KEY environment variables must reference your API credentials.
       # "|| true" specifies to continue build if Pipeline Scan discovers flaws.
       # To fail the build for new flaws not listed in a baseline file, add an existing baseline file with "-bf <baseline filename>" and remove "|| true".
